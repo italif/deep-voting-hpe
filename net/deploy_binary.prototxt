@@ -1,0 +1,18 @@
+name: "HPE-WIS-binary"
+input: "coarse_soft_a_b"
+input_dim: 1
+input_dim: 625
+input_dim: 34
+input_dim: 34
+layer {
+  name: "binary_a_b"
+  type: "Deconvolution"
+  bottom: "coarse_soft_a_b"
+  top: "binary_a_b"
+  convolution_param {
+    num_output: 441
+    bias_term: false
+    kernel_size: 11
+    stride: 1
+  }
+}

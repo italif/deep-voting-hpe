@@ -1,0 +1,53 @@
+name: "HPE-WIS-single-deconv"
+input: "soft_pt"
+input_dim: 1
+input_dim: 50
+input_dim: 102
+input_dim: 102
+
+#######################
+
+layer {
+  name: "unary_pt"
+  type: "Deconvolution"
+  bottom: "soft_pt"
+  top: "unary_pt"
+  convolution_param {
+    num_output: 1
+    bias_term: false
+    kernel_size: 65
+    stride: 1
+  }
+}
+
+#######  coarse prob ######
+
+layer {
+  name: "up_unary_pt"
+  type: "Deconvolution"
+  bottom: "unary_pt"
+  top: "up_unary_pt"
+  convolution_param {
+    num_output: 1
+    bias_term: false
+    kernel_size: 8
+    stride: 4
+    weight_filler {
+      type: "bilinear"
+    }
+  }
+}
+
+layer {
+  name: "coarse_prob_pt"
+  type: "Pooling"
+  bottom: "up_unary_pt"
+  top: "coarse_prob_pt"
+  top: "coarse_arg_pt"
+  pooling_param {
+    pool: MAX
+    kernel_size: 12
+    stride: 12
+	pad: 2
+  }
+}

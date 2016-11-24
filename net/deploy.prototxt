@@ -1,0 +1,1634 @@
+name: "HPE-WIS"
+input: "image"
+input_dim: 1
+input_dim: 3
+input_dim: 504
+input_dim: 504
+
+### VGG16 ###
+layer {
+  name: "conv1_1"
+  type: "Convolution"
+  bottom: "image"
+  top: "conv1_1"
+  convolution_param {
+    num_output: 64
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  name: "relu1_1"
+  type: "ReLU"
+  bottom: "conv1_1"
+  top: "conv1_1"
+}
+layer {
+  name: "conv1_2"
+  type: "Convolution"
+  bottom: "conv1_1"
+  top: "conv1_2"
+  convolution_param {
+    num_output: 64
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  name: "relu1_2"
+  type: "ReLU"
+  bottom: "conv1_2"
+  top: "conv1_2"
+}
+layer {
+  name: "pool1"
+  type: "Pooling"
+  bottom: "conv1_2"
+  top: "pool1"
+  pooling_param {
+    pool: MAX
+    kernel_size: 2
+    stride: 2
+  }
+}
+layer {
+  name: "conv2_1"
+  type: "Convolution"
+  bottom: "pool1"
+  top: "conv2_1"
+  convolution_param {
+    num_output: 128
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  name: "relu2_1"
+  type: "ReLU"
+  bottom: "conv2_1"
+  top: "conv2_1"
+}
+layer {
+  name: "conv2_2"
+  type: "Convolution"
+  bottom: "conv2_1"
+  top: "conv2_2"
+  convolution_param {
+    num_output: 128
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  name: "relu2_2"
+  type: "ReLU"
+  bottom: "conv2_2"
+  top: "conv2_2"
+}
+layer {
+  name: "pool2"
+  type: "Pooling"
+  bottom: "conv2_2"
+  top: "pool2"
+  pooling_param {
+    pool: MAX
+    kernel_size: 2
+    stride: 2
+  }
+}
+layer {
+  name: "conv3_1"
+  type: "Convolution"
+  bottom: "pool2"
+  top: "conv3_1"
+  convolution_param {
+    num_output: 256
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  name: "relu3_1"
+  type: "ReLU"
+  bottom: "conv3_1"
+  top: "conv3_1"
+}
+layer {
+  name: "conv3_2"
+  type: "Convolution"
+  bottom: "conv3_1"
+  top: "conv3_2"
+  convolution_param {
+    num_output: 256
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  name: "relu3_2"
+  type: "ReLU"
+  bottom: "conv3_2"
+  top: "conv3_2"
+}
+layer {
+  name: "conv3_3"
+  type: "Convolution"
+  bottom: "conv3_2"
+  top: "conv3_3"
+  convolution_param {
+    num_output: 256
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  name: "relu3_3"
+  type: "ReLU"
+  bottom: "conv3_3"
+  top: "conv3_3"
+}
+layer {
+  name: "pool3"
+  type: "Pooling"
+  bottom: "conv3_3"
+  top: "pool3"
+  pooling_param {
+    pool: MAX
+    kernel_size: 2
+    stride: 2
+  }
+}
+layer {
+  name: "conv4_1"
+  type: "Convolution"
+  bottom: "pool3"
+  top: "conv4_1"
+  convolution_param {
+    num_output: 512
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  name: "relu4_1"
+  type: "ReLU"
+  bottom: "conv4_1"
+  top: "conv4_1"
+}
+layer {
+  name: "conv4_2"
+  type: "Convolution"
+  bottom: "conv4_1"
+  top: "conv4_2"
+  convolution_param {
+    num_output: 512
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  name: "relu4_2"
+  type: "ReLU"
+  bottom: "conv4_2"
+  top: "conv4_2"
+}
+layer {
+  name: "conv4_3"
+  type: "Convolution"
+  bottom: "conv4_2"
+  top: "conv4_3"
+  convolution_param {
+    num_output: 512
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  name: "relu4_3"
+  type: "ReLU"
+  bottom: "conv4_3"
+  top: "conv4_3"
+}
+layer {
+  name: "pool4"
+  type: "Pooling"
+  bottom: "conv4_3"
+  top: "pool4"
+  pooling_param {
+    pool: MAX
+    kernel_size: 2
+    stride: 1
+  }
+}
+layer {
+  name: "conv5_1"
+  type: "Convolution"
+  bottom: "pool4"
+  top: "conv5_1"
+  convolution_param {
+    num_output: 512
+    pad: 2
+    kernel_size: 3
+    dilation: 2
+  }
+}
+layer {
+  name: "relu5_1"
+  type: "ReLU"
+  bottom: "conv5_1"
+  top: "conv5_1"
+}
+layer {
+  name: "conv5_2"
+  type: "Convolution"
+  bottom: "conv5_1"
+  top: "conv5_2"
+  convolution_param {
+    num_output: 512
+    pad: 2
+    kernel_size: 3
+    dilation: 2
+  }
+}
+layer {
+  name: "relu5_2"
+  type: "ReLU"
+  bottom: "conv5_2"
+  top: "conv5_2"
+}
+layer {
+  name: "conv5_3"
+  type: "Convolution"
+  bottom: "conv5_2"
+  top: "conv5_3"
+  convolution_param {
+    num_output: 512
+    pad: 2
+    kernel_size: 3
+    dilation: 2
+  }
+}
+layer {
+  name: "relu5_3"
+  type: "ReLU"
+  bottom: "conv5_3"
+  top: "conv5_3"
+}
+layer {
+  name: "pool5"
+  type: "Pooling"
+  bottom: "conv5_3"
+  top: "pool5"
+  pooling_param {
+    pool: MAX
+    kernel_size: 3
+    stride: 1
+  }
+}
+layer {
+  name: "fc1"
+  type: "Convolution"
+  bottom: "pool5"
+  top: "fc1"
+  convolution_param {
+    num_output: 2048
+    pad: 7
+    kernel_size: 7
+    stride: 1
+    dilation: 4
+  }
+}
+layer {
+  name: "relu_fc1"
+  type: "ReLU"
+  bottom: "fc1"
+  top: "fc1"
+}
+layer {
+  name: "drop_fc1"
+  type: "Dropout"
+  bottom: "fc1"
+  top: "fc1"
+  dropout_param {
+    dropout_ratio: 0.5
+  }
+}
+layer {
+  name: "fc2"
+  type: "Convolution"
+  bottom: "fc1"
+  top: "fc2"
+  convolution_param {
+    num_output: 2048
+    pad: 0
+    kernel_size: 1
+    stride: 1
+  }
+}
+layer {
+  name: "relu_fc2"
+  type: "ReLU"
+  bottom: "fc2"
+  top: "fc2"
+}
+layer {
+  name: "drop_fc2"
+  type: "Dropout"
+  bottom: "fc2"
+  top: "fc2"
+  dropout_param {
+    dropout_ratio: 0.5
+  }
+}
+#### r_ankle ####
+layer {
+  name: "score_r_ankle"
+  type: "Convolution"
+  bottom: "fc2"
+  top: "score_r_ankle"
+  convolution_param {
+    num_output: 50
+    pad: 0
+    kernel_size: 1
+    stride: 1
+  }
+}
+layer {
+  name: "score_ex_r_ankle"
+  type: "Deconvolution"
+  bottom: "score_r_ankle"
+  top: "score_ex_r_ankle"
+  convolution_param {
+    num_output: 50
+    bias_term: false
+    kernel_size: 6
+    stride: 2
+    pad: 1
+  }
+}
+layer {
+  name: "soft_r_ankle"
+  type: "Softmax"
+  bottom: "score_ex_r_ankle"
+  top: "soft_r_ankle"
+}
+#### r_knee ####
+layer {
+  name: "score_r_knee"
+  type: "Convolution"
+  bottom: "fc2"
+  top: "score_r_knee"
+  convolution_param {
+    num_output: 50
+    pad: 0
+    kernel_size: 1
+    stride: 1
+  }
+}
+layer {
+  name: "score_ex_r_knee"
+  type: "Deconvolution"
+  bottom: "score_r_knee"
+  top: "score_ex_r_knee"
+  convolution_param {
+    num_output: 50
+    bias_term: false
+    kernel_size: 6
+    stride: 2
+    pad: 1
+  }
+}
+layer {
+  name: "soft_r_knee"
+  type: "Softmax"
+  bottom: "score_ex_r_knee"
+  top: "soft_r_knee"
+}
+#### r_hip ####
+layer {
+  name: "score_r_hip"
+  type: "Convolution"
+  bottom: "fc2"
+  top: "score_r_hip"
+  convolution_param {
+    num_output: 50
+    pad: 0
+    kernel_size: 1
+    stride: 1
+  }
+}
+layer {
+  name: "score_ex_r_hip"
+  type: "Deconvolution"
+  bottom: "score_r_hip"
+  top: "score_ex_r_hip"
+  convolution_param {
+    num_output: 50
+    bias_term: false
+    kernel_size: 6
+    stride: 2
+    pad: 1
+  }
+}
+layer {
+  name: "soft_r_hip"
+  type: "Softmax"
+  bottom: "score_ex_r_hip"
+  top: "soft_r_hip"
+}
+#### l_hip ####
+layer {
+  name: "score_l_hip"
+  type: "Convolution"
+  bottom: "fc2"
+  top: "score_l_hip"
+  convolution_param {
+    num_output: 50
+    pad: 0
+    kernel_size: 1
+    stride: 1
+  }
+}
+layer {
+  name: "score_ex_l_hip"
+  type: "Deconvolution"
+  bottom: "score_l_hip"
+  top: "score_ex_l_hip"
+  convolution_param {
+    num_output: 50
+    bias_term: false
+    kernel_size: 6
+    stride: 2
+    pad: 1
+  }
+}
+layer {
+  name: "soft_l_hip"
+  type: "Softmax"
+  bottom: "score_ex_l_hip"
+  top: "soft_l_hip"
+}
+#### l_knee ####
+layer {
+  name: "score_l_knee"
+  type: "Convolution"
+  bottom: "fc2"
+  top: "score_l_knee"
+  convolution_param {
+    num_output: 50
+    pad: 0
+    kernel_size: 1
+    stride: 1
+  }
+}
+layer {
+  name: "score_ex_l_knee"
+  type: "Deconvolution"
+  bottom: "score_l_knee"
+  top: "score_ex_l_knee"
+  convolution_param {
+    num_output: 50
+    bias_term: false
+    kernel_size: 6
+    stride: 2
+    pad: 1
+  }
+}
+layer {
+  name: "soft_l_knee"
+  type: "Softmax"
+  bottom: "score_ex_l_knee"
+  top: "soft_l_knee"
+}
+#### l_ankle ####
+layer {
+  name: "score_l_ankle"
+  type: "Convolution"
+  bottom: "fc2"
+  top: "score_l_ankle"
+  convolution_param {
+    num_output: 50
+    pad: 0
+    kernel_size: 1
+    stride: 1
+  }
+}
+layer {
+  name: "score_ex_l_ankle"
+  type: "Deconvolution"
+  bottom: "score_l_ankle"
+  top: "score_ex_l_ankle"
+  convolution_param {
+    num_output: 50
+    bias_term: false
+    kernel_size: 6
+    stride: 2
+    pad: 1
+  }
+}
+layer {
+  name: "soft_l_ankle"
+  type: "Softmax"
+  bottom: "score_ex_l_ankle"
+  top: "soft_l_ankle"
+}
+#### pelvis ####
+layer {
+  name: "score_pelvis"
+  type: "Convolution"
+  bottom: "fc2"
+  top: "score_pelvis"
+  convolution_param {
+    num_output: 50
+    pad: 0
+    kernel_size: 1
+    stride: 1
+  }
+}
+layer {
+  name: "score_ex_pelvis"
+  type: "Deconvolution"
+  bottom: "score_pelvis"
+  top: "score_ex_pelvis"
+  convolution_param {
+    num_output: 50
+    bias_term: false
+    kernel_size: 6
+    stride: 2
+    pad: 1
+  }
+}
+layer {
+  name: "soft_pelvis"
+  type: "Softmax"
+  bottom: "score_ex_pelvis"
+  top: "soft_pelvis"
+}
+#### thorax ####
+layer {
+  name: "score_thorax"
+  type: "Convolution"
+  bottom: "fc2"
+  top: "score_thorax"
+  convolution_param {
+    num_output: 50
+    pad: 0
+    kernel_size: 1
+    stride: 1
+  }
+}
+layer {
+  name: "score_ex_thorax"
+  type: "Deconvolution"
+  bottom: "score_thorax"
+  top: "score_ex_thorax"
+  convolution_param {
+    num_output: 50
+    bias_term: false
+    kernel_size: 6
+    stride: 2
+    pad: 1
+  }
+}
+layer {
+  name: "soft_thorax"
+  type: "Softmax"
+  bottom: "score_ex_thorax"
+  top: "soft_thorax"
+}
+#### upper_neck ####
+layer {
+  name: "score_upper_neck"
+  type: "Convolution"
+  bottom: "fc2"
+  top: "score_upper_neck"
+  convolution_param {
+    num_output: 50
+    pad: 0
+    kernel_size: 1
+    stride: 1
+  }
+}
+layer {
+  name: "score_ex_upper_neck"
+  type: "Deconvolution"
+  bottom: "score_upper_neck"
+  top: "score_ex_upper_neck"
+  convolution_param {
+    num_output: 50
+    bias_term: false
+    kernel_size: 6
+    stride: 2
+    pad: 1
+  }
+}
+layer {
+  name: "soft_upper_neck"
+  type: "Softmax"
+  bottom: "score_ex_upper_neck"
+  top: "soft_upper_neck"
+}
+#### head_top ####
+layer {
+  name: "score_head_top"
+  type: "Convolution"
+  bottom: "fc2"
+  top: "score_head_top"
+  convolution_param {
+    num_output: 50
+    pad: 0
+    kernel_size: 1
+    stride: 1
+  }
+}
+layer {
+  name: "score_ex_head_top"
+  type: "Deconvolution"
+  bottom: "score_head_top"
+  top: "score_ex_head_top"
+  convolution_param {
+    num_output: 50
+    bias_term: false
+    kernel_size: 6
+    stride: 2
+    pad: 1
+  }
+}
+layer {
+  name: "soft_head_top"
+  type: "Softmax"
+  bottom: "score_ex_head_top"
+  top: "soft_head_top"
+}
+#### r_wrist ####
+layer {
+  name: "score_r_wrist"
+  type: "Convolution"
+  bottom: "fc2"
+  top: "score_r_wrist"
+  convolution_param {
+    num_output: 50
+    pad: 0
+    kernel_size: 1
+    stride: 1
+  }
+}
+layer {
+  name: "score_ex_r_wrist"
+  type: "Deconvolution"
+  bottom: "score_r_wrist"
+  top: "score_ex_r_wrist"
+  convolution_param {
+    num_output: 50
+    bias_term: false
+    kernel_size: 6
+    stride: 2
+    pad: 1
+  }
+}
+layer {
+  name: "soft_r_wrist"
+  type: "Softmax"
+  bottom: "score_ex_r_wrist"
+  top: "soft_r_wrist"
+}
+#### r_elbow ####
+layer {
+  name: "score_r_elbow"
+  type: "Convolution"
+  bottom: "fc2"
+  top: "score_r_elbow"
+  convolution_param {
+    num_output: 50
+    pad: 0
+    kernel_size: 1
+    stride: 1
+  }
+}
+layer {
+  name: "score_ex_r_elbow"
+  type: "Deconvolution"
+  bottom: "score_r_elbow"
+  top: "score_ex_r_elbow"
+  convolution_param {
+    num_output: 50
+    bias_term: false
+    kernel_size: 6
+    stride: 2
+    pad: 1
+  }
+}
+layer {
+  name: "soft_r_elbow"
+  type: "Softmax"
+  bottom: "score_ex_r_elbow"
+  top: "soft_r_elbow"
+}
+#### r_shoulder ####
+layer {
+  name: "score_r_shoulder"
+  type: "Convolution"
+  bottom: "fc2"
+  top: "score_r_shoulder"
+  convolution_param {
+    num_output: 50
+    pad: 0
+    kernel_size: 1
+    stride: 1
+  }
+}
+layer {
+  name: "score_ex_r_shoulder"
+  type: "Deconvolution"
+  bottom: "score_r_shoulder"
+  top: "score_ex_r_shoulder"
+  convolution_param {
+    num_output: 50
+    bias_term: false
+    kernel_size: 6
+    stride: 2
+    pad: 1
+  }
+}
+layer {
+  name: "soft_r_shoulder"
+  type: "Softmax"
+  bottom: "score_ex_r_shoulder"
+  top: "soft_r_shoulder"
+}
+#### l_shoulder ####
+layer {
+  name: "score_l_shoulder"
+  type: "Convolution"
+  bottom: "fc2"
+  top: "score_l_shoulder"
+  convolution_param {
+    num_output: 50
+    pad: 0
+    kernel_size: 1
+    stride: 1
+  }
+}
+layer {
+  name: "score_ex_l_shoulder"
+  type: "Deconvolution"
+  bottom: "score_l_shoulder"
+  top: "score_ex_l_shoulder"
+  convolution_param {
+    num_output: 50
+    bias_term: false
+    kernel_size: 6
+    stride: 2
+    pad: 1
+  }
+}
+layer {
+  name: "soft_l_shoulder"
+  type: "Softmax"
+  bottom: "score_ex_l_shoulder"
+  top: "soft_l_shoulder"
+}
+#### l_elbow ####
+layer {
+  name: "score_l_elbow"
+  type: "Convolution"
+  bottom: "fc2"
+  top: "score_l_elbow"
+  convolution_param {
+    num_output: 50
+    pad: 0
+    kernel_size: 1
+    stride: 1
+  }
+}
+layer {
+  name: "score_ex_l_elbow"
+  type: "Deconvolution"
+  bottom: "score_l_elbow"
+  top: "score_ex_l_elbow"
+  convolution_param {
+    num_output: 50
+    bias_term: false
+    kernel_size: 6
+    stride: 2
+    pad: 1
+  }
+}
+layer {
+  name: "soft_l_elbow"
+  type: "Softmax"
+  bottom: "score_ex_l_elbow"
+  top: "soft_l_elbow"
+}
+#### l_wrist ####
+layer {
+  name: "score_l_wrist"
+  type: "Convolution"
+  bottom: "fc2"
+  top: "score_l_wrist"
+  convolution_param {
+    num_output: 50
+    pad: 0
+    kernel_size: 1
+    stride: 1
+  }
+}
+layer {
+  name: "score_ex_l_wrist"
+  type: "Deconvolution"
+  bottom: "score_l_wrist"
+  top: "score_ex_l_wrist"
+  convolution_param {
+    num_output: 50
+    bias_term: false
+    kernel_size: 6
+    stride: 2
+    pad: 1
+  }
+}
+layer {
+  name: "soft_l_wrist"
+  type: "Softmax"
+  bottom: "score_ex_l_wrist"
+  top: "soft_l_wrist"
+}
+#### r_hand ####
+layer {
+  name: "score_r_hand"
+  type: "Convolution"
+  bottom: "fc2"
+  top: "score_r_hand"
+  convolution_param {
+    num_output: 50
+    pad: 0
+    kernel_size: 1
+    stride: 1
+  }
+}
+layer {
+  name: "score_ex_r_hand"
+  type: "Deconvolution"
+  bottom: "score_r_hand"
+  top: "score_ex_r_hand"
+  convolution_param {
+    num_output: 50
+    bias_term: false
+    kernel_size: 6
+    stride: 2
+    pad: 1
+  }
+}
+layer {
+  name: "soft_r_hand"
+  type: "Softmax"
+  bottom: "score_ex_r_hand"
+  top: "soft_r_hand"
+}
+#### l_hand ####
+layer {
+  name: "score_l_hand"
+  type: "Convolution"
+  bottom: "fc2"
+  top: "score_l_hand"
+  convolution_param {
+    num_output: 50
+    pad: 0
+    kernel_size: 1
+    stride: 1
+  }
+}
+layer {
+  name: "score_ex_l_hand"
+  type: "Deconvolution"
+  bottom: "score_l_hand"
+  top: "score_ex_l_hand"
+  convolution_param {
+    num_output: 50
+    bias_term: false
+    kernel_size: 6
+    stride: 2
+    pad: 1
+  }
+}
+layer {
+  name: "soft_l_hand"
+  type: "Softmax"
+  bottom: "score_ex_l_hand"
+  top: "soft_l_hand"
+}
+#### r_low_leg ####
+layer {
+  name: "score_r_low_leg"
+  type: "Convolution"
+  bottom: "fc2"
+  top: "score_r_low_leg"
+  convolution_param {
+    num_output: 50
+    pad: 0
+    kernel_size: 1
+    stride: 1
+  }
+}
+layer {
+  name: "score_ex_r_low_leg"
+  type: "Deconvolution"
+  bottom: "score_r_low_leg"
+  top: "score_ex_r_low_leg"
+  convolution_param {
+    num_output: 50
+    bias_term: false
+    kernel_size: 6
+    stride: 2
+    pad: 1
+  }
+}
+layer {
+  name: "soft_r_low_leg"
+  type: "Softmax"
+  bottom: "score_ex_r_low_leg"
+  top: "soft_r_low_leg"
+}
+#### r_up_leg ####
+layer {
+  name: "score_r_up_leg"
+  type: "Convolution"
+  bottom: "fc2"
+  top: "score_r_up_leg"
+  convolution_param {
+    num_output: 50
+    pad: 0
+    kernel_size: 1
+    stride: 1
+  }
+}
+layer {
+  name: "score_ex_r_up_leg"
+  type: "Deconvolution"
+  bottom: "score_r_up_leg"
+  top: "score_ex_r_up_leg"
+  convolution_param {
+    num_output: 50
+    bias_term: false
+    kernel_size: 6
+    stride: 2
+    pad: 1
+  }
+}
+layer {
+  name: "soft_r_up_leg"
+  type: "Softmax"
+  bottom: "score_ex_r_up_leg"
+  top: "soft_r_up_leg"
+}
+#### l_up_leg ####
+layer {
+  name: "score_l_up_leg"
+  type: "Convolution"
+  bottom: "fc2"
+  top: "score_l_up_leg"
+  convolution_param {
+    num_output: 50
+    pad: 0
+    kernel_size: 1
+    stride: 1
+  }
+}
+layer {
+  name: "score_ex_l_up_leg"
+  type: "Deconvolution"
+  bottom: "score_l_up_leg"
+  top: "score_ex_l_up_leg"
+  convolution_param {
+    num_output: 50
+    bias_term: false
+    kernel_size: 6
+    stride: 2
+    pad: 1
+  }
+}
+layer {
+  name: "soft_l_up_leg"
+  type: "Softmax"
+  bottom: "score_ex_l_up_leg"
+  top: "soft_l_up_leg"
+}
+#### l_low_leg ####
+layer {
+  name: "score_l_low_leg"
+  type: "Convolution"
+  bottom: "fc2"
+  top: "score_l_low_leg"
+  convolution_param {
+    num_output: 50
+    pad: 0
+    kernel_size: 1
+    stride: 1
+  }
+}
+layer {
+  name: "score_ex_l_low_leg"
+  type: "Deconvolution"
+  bottom: "score_l_low_leg"
+  top: "score_ex_l_low_leg"
+  convolution_param {
+    num_output: 50
+    bias_term: false
+    kernel_size: 6
+    stride: 2
+    pad: 1
+  }
+}
+layer {
+  name: "soft_l_low_leg"
+  type: "Softmax"
+  bottom: "score_ex_l_low_leg"
+  top: "soft_l_low_leg"
+}
+#### mid_body ####
+layer {
+  name: "score_mid_body"
+  type: "Convolution"
+  bottom: "fc2"
+  top: "score_mid_body"
+  convolution_param {
+    num_output: 50
+    pad: 0
+    kernel_size: 1
+    stride: 1
+  }
+}
+layer {
+  name: "score_ex_mid_body"
+  type: "Deconvolution"
+  bottom: "score_mid_body"
+  top: "score_ex_mid_body"
+  convolution_param {
+    num_output: 50
+    bias_term: false
+    kernel_size: 6
+    stride: 2
+    pad: 1
+  }
+}
+layer {
+  name: "soft_mid_body"
+  type: "Softmax"
+  bottom: "score_ex_mid_body"
+  top: "soft_mid_body"
+}
+#### r_body ####
+layer {
+  name: "score_r_body"
+  type: "Convolution"
+  bottom: "fc2"
+  top: "score_r_body"
+  convolution_param {
+    num_output: 50
+    pad: 0
+    kernel_size: 1
+    stride: 1
+  }
+}
+layer {
+  name: "score_ex_r_body"
+  type: "Deconvolution"
+  bottom: "score_r_body"
+  top: "score_ex_r_body"
+  convolution_param {
+    num_output: 50
+    bias_term: false
+    kernel_size: 6
+    stride: 2
+    pad: 1
+  }
+}
+layer {
+  name: "soft_r_body"
+  type: "Softmax"
+  bottom: "score_ex_r_body"
+  top: "soft_r_body"
+}
+#### l_body ####
+layer {
+  name: "score_l_body"
+  type: "Convolution"
+  bottom: "fc2"
+  top: "score_l_body"
+  convolution_param {
+    num_output: 50
+    pad: 0
+    kernel_size: 1
+    stride: 1
+  }
+}
+layer {
+  name: "score_ex_l_body"
+  type: "Deconvolution"
+  bottom: "score_l_body"
+  top: "score_ex_l_body"
+  convolution_param {
+    num_output: 50
+    bias_term: false
+    kernel_size: 6
+    stride: 2
+    pad: 1
+  }
+}
+layer {
+  name: "soft_l_body"
+  type: "Softmax"
+  bottom: "score_ex_l_body"
+  top: "soft_l_body"
+}
+#### head_center ####
+layer {
+  name: "score_head_center"
+  type: "Convolution"
+  bottom: "fc2"
+  top: "score_head_center"
+  convolution_param {
+    num_output: 50
+    pad: 0
+    kernel_size: 1
+    stride: 1
+  }
+}
+layer {
+  name: "score_ex_head_center"
+  type: "Deconvolution"
+  bottom: "score_head_center"
+  top: "score_ex_head_center"
+  convolution_param {
+    num_output: 50
+    bias_term: false
+    kernel_size: 6
+    stride: 2
+    pad: 1
+  }
+}
+layer {
+  name: "soft_head_center"
+  type: "Softmax"
+  bottom: "score_ex_head_center"
+  top: "soft_head_center"
+}
+#### r_low_arm ####
+layer {
+  name: "score_r_low_arm"
+  type: "Convolution"
+  bottom: "fc2"
+  top: "score_r_low_arm"
+  convolution_param {
+    num_output: 50
+    pad: 0
+    kernel_size: 1
+    stride: 1
+  }
+}
+layer {
+  name: "score_ex_r_low_arm"
+  type: "Deconvolution"
+  bottom: "score_r_low_arm"
+  top: "score_ex_r_low_arm"
+  convolution_param {
+    num_output: 50
+    bias_term: false
+    kernel_size: 6
+    stride: 2
+    pad: 1
+  }
+}
+layer {
+  name: "soft_r_low_arm"
+  type: "Softmax"
+  bottom: "score_ex_r_low_arm"
+  top: "soft_r_low_arm"
+}
+#### r_up_arm ####
+layer {
+  name: "score_r_up_arm"
+  type: "Convolution"
+  bottom: "fc2"
+  top: "score_r_up_arm"
+  convolution_param {
+    num_output: 50
+    pad: 0
+    kernel_size: 1
+    stride: 1
+  }
+}
+layer {
+  name: "score_ex_r_up_arm"
+  type: "Deconvolution"
+  bottom: "score_r_up_arm"
+  top: "score_ex_r_up_arm"
+  convolution_param {
+    num_output: 50
+    bias_term: false
+    kernel_size: 6
+    stride: 2
+    pad: 1
+  }
+}
+layer {
+  name: "soft_r_up_arm"
+  type: "Softmax"
+  bottom: "score_ex_r_up_arm"
+  top: "soft_r_up_arm"
+}
+#### l_up_arm ####
+layer {
+  name: "score_l_up_arm"
+  type: "Convolution"
+  bottom: "fc2"
+  top: "score_l_up_arm"
+  convolution_param {
+    num_output: 50
+    pad: 0
+    kernel_size: 1
+    stride: 1
+  }
+}
+layer {
+  name: "score_ex_l_up_arm"
+  type: "Deconvolution"
+  bottom: "score_l_up_arm"
+  top: "score_ex_l_up_arm"
+  convolution_param {
+    num_output: 50
+    bias_term: false
+    kernel_size: 6
+    stride: 2
+    pad: 1
+  }
+}
+layer {
+  name: "soft_l_up_arm"
+  type: "Softmax"
+  bottom: "score_ex_l_up_arm"
+  top: "soft_l_up_arm"
+}
+#### l_low_arm ####
+layer {
+  name: "score_l_low_arm"
+  type: "Convolution"
+  bottom: "fc2"
+  top: "score_l_low_arm"
+  convolution_param {
+    num_output: 50
+    pad: 0
+    kernel_size: 1
+    stride: 1
+  }
+}
+layer {
+  name: "score_ex_l_low_arm"
+  type: "Deconvolution"
+  bottom: "score_l_low_arm"
+  top: "score_ex_l_low_arm"
+  convolution_param {
+    num_output: 50
+    bias_term: false
+    kernel_size: 6
+    stride: 2
+    pad: 1
+  }
+}
+layer {
+  name: "soft_l_low_arm"
+  type: "Softmax"
+  bottom: "score_ex_l_low_arm"
+  top: "soft_l_low_arm"
+}
+#######  coarse  soft ######
+
+layer {
+  name: "coarse_soft_r_ankle"
+  type: "Pooling"
+  bottom: "soft_r_ankle"
+  top: "coarse_soft_r_ankle"
+  pooling_param {
+    pool: AVE
+    kernel_size: 3
+    stride: 3
+  }
+}
+layer {
+  name: "coarse_soft_r_knee"
+  type: "Pooling"
+  bottom: "soft_r_knee"
+  top: "coarse_soft_r_knee"
+  pooling_param {
+    pool: AVE
+    kernel_size: 3
+    stride: 3
+  }
+}
+layer {
+  name: "coarse_soft_r_hip"
+  type: "Pooling"
+  bottom: "soft_r_hip"
+  top: "coarse_soft_r_hip"
+  pooling_param {
+    pool: AVE
+    kernel_size: 3
+    stride: 3
+  }
+}
+layer {
+  name: "coarse_soft_l_hip"
+  type: "Pooling"
+  bottom: "soft_l_hip"
+  top: "coarse_soft_l_hip"
+  pooling_param {
+    pool: AVE
+    kernel_size: 3
+    stride: 3
+  }
+}
+layer {
+  name: "coarse_soft_l_knee"
+  type: "Pooling"
+  bottom: "soft_l_knee"
+  top: "coarse_soft_l_knee"
+  pooling_param {
+    pool: AVE
+    kernel_size: 3
+    stride: 3
+  }
+}
+layer {
+  name: "coarse_soft_l_ankle"
+  type: "Pooling"
+  bottom: "soft_l_ankle"
+  top: "coarse_soft_l_ankle"
+  pooling_param {
+    pool: AVE
+    kernel_size: 3
+    stride: 3
+  }
+}
+layer {
+  name: "coarse_soft_pelvis"
+  type: "Pooling"
+  bottom: "soft_pelvis"
+  top: "coarse_soft_pelvis"
+  pooling_param {
+    pool: AVE
+    kernel_size: 3
+    stride: 3
+  }
+}
+layer {
+  name: "coarse_soft_thorax"
+  type: "Pooling"
+  bottom: "soft_thorax"
+  top: "coarse_soft_thorax"
+  pooling_param {
+    pool: AVE
+    kernel_size: 3
+    stride: 3
+  }
+}
+layer {
+  name: "coarse_soft_upper_neck"
+  type: "Pooling"
+  bottom: "soft_upper_neck"
+  top: "coarse_soft_upper_neck"
+  pooling_param {
+    pool: AVE
+    kernel_size: 3
+    stride: 3
+  }
+}
+layer {
+  name: "coarse_soft_head_top"
+  type: "Pooling"
+  bottom: "soft_head_top"
+  top: "coarse_soft_head_top"
+  pooling_param {
+    pool: AVE
+    kernel_size: 3
+    stride: 3
+  }
+}
+layer {
+  name: "coarse_soft_r_wrist"
+  type: "Pooling"
+  bottom: "soft_r_wrist"
+  top: "coarse_soft_r_wrist"
+  pooling_param {
+    pool: AVE
+    kernel_size: 3
+    stride: 3
+  }
+}
+layer {
+  name: "coarse_soft_r_elbow"
+  type: "Pooling"
+  bottom: "soft_r_elbow"
+  top: "coarse_soft_r_elbow"
+  pooling_param {
+    pool: AVE
+    kernel_size: 3
+    stride: 3
+  }
+}
+layer {
+  name: "coarse_soft_r_shoulder"
+  type: "Pooling"
+  bottom: "soft_r_shoulder"
+  top: "coarse_soft_r_shoulder"
+  pooling_param {
+    pool: AVE
+    kernel_size: 3
+    stride: 3
+  }
+}
+layer {
+  name: "coarse_soft_l_shoulder"
+  type: "Pooling"
+  bottom: "soft_l_shoulder"
+  top: "coarse_soft_l_shoulder"
+  pooling_param {
+    pool: AVE
+    kernel_size: 3
+    stride: 3
+  }
+}
+layer {
+  name: "coarse_soft_l_elbow"
+  type: "Pooling"
+  bottom: "soft_l_elbow"
+  top: "coarse_soft_l_elbow"
+  pooling_param {
+    pool: AVE
+    kernel_size: 3
+    stride: 3
+  }
+}
+layer {
+  name: "coarse_soft_l_wrist"
+  type: "Pooling"
+  bottom: "soft_l_wrist"
+  top: "coarse_soft_l_wrist"
+  pooling_param {
+    pool: AVE
+    kernel_size: 3
+    stride: 3
+  }
+}
+layer {
+  name: "coarse_soft_r_hand"
+  type: "Pooling"
+  bottom: "soft_r_hand"
+  top: "coarse_soft_r_hand"
+  pooling_param {
+    pool: AVE
+    kernel_size: 3
+    stride: 3
+  }
+}
+layer {
+  name: "coarse_soft_l_hand"
+  type: "Pooling"
+  bottom: "soft_l_hand"
+  top: "coarse_soft_l_hand"
+  pooling_param {
+    pool: AVE
+    kernel_size: 3
+    stride: 3
+  }
+}
+layer {
+  name: "coarse_soft_r_low_leg"
+  type: "Pooling"
+  bottom: "soft_r_low_leg"
+  top: "coarse_soft_r_low_leg"
+  pooling_param {
+    pool: AVE
+    kernel_size: 3
+    stride: 3
+  }
+}
+layer {
+  name: "coarse_soft_r_up_leg"
+  type: "Pooling"
+  bottom: "soft_r_up_leg"
+  top: "coarse_soft_r_up_leg"
+  pooling_param {
+    pool: AVE
+    kernel_size: 3
+    stride: 3
+  }
+}
+layer {
+  name: "coarse_soft_l_up_leg"
+  type: "Pooling"
+  bottom: "soft_l_up_leg"
+  top: "coarse_soft_l_up_leg"
+  pooling_param {
+    pool: AVE
+    kernel_size: 3
+    stride: 3
+  }
+}
+layer {
+  name: "coarse_soft_l_low_leg"
+  type: "Pooling"
+  bottom: "soft_l_low_leg"
+  top: "coarse_soft_l_low_leg"
+  pooling_param {
+    pool: AVE
+    kernel_size: 3
+    stride: 3
+  }
+}
+layer {
+  name: "coarse_soft_mid_body"
+  type: "Pooling"
+  bottom: "soft_mid_body"
+  top: "coarse_soft_mid_body"
+  pooling_param {
+    pool: AVE
+    kernel_size: 3
+    stride: 3
+  }
+}
+layer {
+  name: "coarse_soft_r_body"
+  type: "Pooling"
+  bottom: "soft_r_body"
+  top: "coarse_soft_r_body"
+  pooling_param {
+    pool: AVE
+    kernel_size: 3
+    stride: 3
+  }
+}
+layer {
+  name: "coarse_soft_l_body"
+  type: "Pooling"
+  bottom: "soft_l_body"
+  top: "coarse_soft_l_body"
+  pooling_param {
+    pool: AVE
+    kernel_size: 3
+    stride: 3
+  }
+}
+layer {
+  name: "coarse_soft_head_center"
+  type: "Pooling"
+  bottom: "soft_head_center"
+  top: "coarse_soft_head_center"
+  pooling_param {
+    pool: AVE
+    kernel_size: 3
+    stride: 3
+  }
+}
+layer {
+  name: "coarse_soft_r_low_arm"
+  type: "Pooling"
+  bottom: "soft_r_low_arm"
+  top: "coarse_soft_r_low_arm"
+  pooling_param {
+    pool: AVE
+    kernel_size: 3
+    stride: 3
+  }
+}
+layer {
+  name: "coarse_soft_r_up_arm"
+  type: "Pooling"
+  bottom: "soft_r_up_arm"
+  top: "coarse_soft_r_up_arm"
+  pooling_param {
+    pool: AVE
+    kernel_size: 3
+    stride: 3
+  }
+}
+layer {
+  name: "coarse_soft_l_up_arm"
+  type: "Pooling"
+  bottom: "soft_l_up_arm"
+  top: "coarse_soft_l_up_arm"
+  pooling_param {
+    pool: AVE
+    kernel_size: 3
+    stride: 3
+  }
+}
+layer {
+  name: "coarse_soft_l_low_arm"
+  type: "Pooling"
+  bottom: "soft_l_low_arm"
+  top: "coarse_soft_l_low_arm"
+  pooling_param {
+    pool: AVE
+    kernel_size: 3
+    stride: 3
+  }
+}
